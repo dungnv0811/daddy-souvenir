@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog">
+
+    <changeSet author="dvnguyen" id="bootstrap-1">
+        <createTable tableName="SALES">
+            <column name="ID" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SALES_PK"/>
+            </column>
+            <column name="ITEM" type="VARCHAR(255)"/>
+            <column name="QUANTITY" type="INTEGER"/>
+            <column name="AMOUNT" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="dvnguyen" id="bootstrap-2">
+        <sqlFile relativeToChangelogFile="true" path="sequence.sql"/>
+    </changeSet>
+</databaseChangeLog>
