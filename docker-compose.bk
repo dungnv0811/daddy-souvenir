@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  myapp-mydb:
+    image: store/oracle/database-enterprise:12.2.0.1
+    environment:
+      - DB_SID=xe
+      - DB_PDB=sys
+      - DB_PWD=Oradoc_db1
+    ports:
+      - '49171:1521'
+      - '49170:22'
+
+  myapp-main:
+    image: daddysouvenir
+#    restart: on-failure
+    depends_on:
+      - myapp-mydb
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=myapp-mysql
+      - DATABASE_USER=sys
+      - DATABASE_PASSWORD=Oradoc_db1
+      - DATABASE_NAME=xe
+      - DATABASE_PORT=49171
+      - DATABASE_URL=jdbc:oracle:thin:@localhost:49171:XE

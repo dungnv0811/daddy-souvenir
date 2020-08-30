@@ -4,6 +4,7 @@
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog">
 
     <changeSet author="dvnguyen" id="bootstrap-1">
+        <dropTable tableName="SALES"/>
         <createTable tableName="SALES">
             <column name="ID" type="VARCHAR(255)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SALES_PK"/>
@@ -15,6 +16,7 @@
     </changeSet>
 
     <changeSet author="dvnguyen" id="bootstrap-2">
+        <dropSequence sequenceName="SALE_SEQUENCE"/>
         <sqlFile relativeToChangelogFile="true" path="sequence.sql"/>
     </changeSet>
 </databaseChangeLog>

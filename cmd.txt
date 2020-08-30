@@ -1,0 +1,1 @@
+build app image: docker build -t daddysouvenir .
