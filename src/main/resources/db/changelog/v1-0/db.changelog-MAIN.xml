@@ -17,6 +17,10 @@
 
     <changeSet author="dvnguyen" id="bootstrap-2">
         <!-- <dropSequence sequenceName="SALE_SEQUENCE"/> -->
-        <sqlFile relativeToChangelogFile="true" path="sequence.sql"/>
+        <createSequence sequenceName="SALE_SEQUENCE"
+                        minValue="1"
+                        maxValue="100000"
+                        incrementBy="1"
+                        startValue="1" />
     </changeSet>
 </databaseChangeLog>
