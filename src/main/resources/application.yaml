@@ -1,0 +1,24 @@
+logging:
+  level:
+    root: INFO
+spring:
+  datasource:
+    driver.class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:49171:XE
+    username: system
+    password: oracle
+  jmx.enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate.dialect: org.hibernate.dialect.Oracle12cDialect
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-MASTER.xml
+    contexts: default
+    drop-first: true
+  security:
+    user:
+      name: dvnguyen
+      password: dvnguyen
