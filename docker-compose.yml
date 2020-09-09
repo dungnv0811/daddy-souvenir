@@ -1,17 +1,23 @@
 version: '3'
 
 services:
-  db:
-    image: wnameless/oracle-xe-11g-r2
-    environment:
-      - ORACLE_SID=XE
-    ports:
-      - "49171:1521"
   web:
     build:
       context: ./
       dockerfile: Dockerfile
+    restart: on-failure
     depends_on:
       - db
     ports:
       - "8080:8080"
+  db:
+    build:
+      context: oracle-db
+      dockerfile: Dockerfile
+    container_name: daddysouvernir-db
+#    volumes:
+#    - ./oracle-db/initdb.d:/docker-entrypoint-initdb.d/
+    ports:
+      - "49171:1521"
+    environment:
+      - SOME_VAR=some_value
